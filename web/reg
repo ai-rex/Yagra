@@ -1,0 +1,35 @@
+#!/usr/bin/python
+
+import os
+import cgi
+import cgitb
+
+from yag import sec
+from yag import db_op
+
+cgitb.enable()
+
+print 'Content-type: text/html; charset=utf8'
+print
+
+if 'REQUEST_METHOD' in os.environ:
+    method = os.environ.get('REQUEST_METHOD').upper()
+    if method == 'GET':
+        with open('template/reg.html') as f:
+            print f.read()
+    elif method == 'POST':
+        form = cgi.FieldStorage()
+        username = form.getvalue('username')
+        password = form.getvalue('password')
+        if sec.check_username(username) and sec.check_password(password):
+            safe_password, salt = sec.get_safe_password(password)
+            #print repr(safe_password), repr(salt)
+            db_op.add_user(username, safe_password, salt)
+            print 'reg success'
+        else:
+            print 'username or password error'
+    else:
+        print 'method error'
+else:
+    print 'environ has no REQUEST_METHOD'
+
