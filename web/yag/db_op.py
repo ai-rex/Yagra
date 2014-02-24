@@ -38,7 +38,8 @@ def get_user(username):
     return run_sql(sql)
 
 def add_auth(username, token):
-    sql = "INSERT INTO Auth VALUES ('%s', '%s');" % (username, token)
+    sql = "INSERT INTO Auth VALUES ('%s', '%s') ON DUPLICATE KEY UPDATE \
+           token='%s';" % (username, token, token)
     run_sql(sql)
 
 def get_auth(username):
