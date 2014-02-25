@@ -30,9 +30,15 @@ class Page(object):
     def add(self, content):
         self._content += content
 
-    def add_file(self, filename):
-        with open(filename) as f:
-            self._content += f.read()
+    def add_file(self, filename, params=None):
+        if params:
+            with open(filename, 'rb') as f:
+                filedata = f.read().decode('utf8')
+                filedata = filedata % params
+                self._content += filedata.encode('utf8')
+        else:
+            with open(filename, 'rb') as f:
+                self._content += f.read()
 
     def redirect(self, url):
         self.add_header('Location: %s' % (url))

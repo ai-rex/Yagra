@@ -46,3 +46,9 @@ def check_cookie(cookie):
         if re.match(pattern, cookie):
             return True
     return False
+
+def check_hashcode(hashcode):
+    pattern = '^[0-9a-f]{32}$'
+    if re.match(pattern, hashcode):
+        return True
+    return False
