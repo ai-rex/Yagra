@@ -1,11 +1,13 @@
 import sec
 import db_op
 
-def add_auth(username, password):
+def add_user(username, password):
     if sec.check_username(username) and sec.check_password(password):
-        safe_password, salt = sec.get_safe_password(password)
-        db_op.add_user(username, safe_password, salt)
-        return True
+        user = db_op.get_user(username)
+        if len(user) == 0:
+            safe_password, salt = sec.get_safe_password(password)
+            db_op.add_user(username, safe_password, salt)
+            return True
     return False
 
 def auth(username, password):
@@ -25,7 +27,7 @@ def save_auth(username, cookie):
     cookie['token'] = cookie_string
     db_op.add_auth(username, token)
 
-def is_auth(http_cookie):
+def cookie_auth(http_cookie):
     if http_cookie:
         cookie_string = http_cookie.get('token').value
         if cookie_string and sec.check_cookie(cookie_string):
@@ -34,6 +36,9 @@ def is_auth(http_cookie):
             if len(auths) == 1:
                 auth = auths[0]
                 if (username, token) == auth:
-                    return True
-    return False
+                    return auth
+    return None
+
+def del_auth(username):
+    db_op.del_auth(username)
 

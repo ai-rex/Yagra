@@ -10,15 +10,10 @@ p.add_header('Content-type: text/html; charset=utf8')
 if 'REQUEST_METHOD' in p.env:
     method = p.env.get('REQUEST_METHOD').upper()
     if method == 'GET':
-        p.add_file('template/reg.html')
-    elif method == 'POST':
-        form = p.form
-        username = form.getvalue('username')
-        password = form.getvalue('password')
-        if auth.add_user(username, password):
-            p.add('reg success')
-        else:
-            p.add('username or password error')
+        auth_info = auth.cookie_auth(p.http_cookie)
+        if auth_info:
+            auth.del_auth(auth_info[0])
+        p.redirect('login')
     else:
         p.add('method error')
 else:

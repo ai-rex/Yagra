@@ -34,6 +34,9 @@ class Page(object):
         with open(filename) as f:
             self._content += f.read()
 
+    def redirect(self, url):
+        self.add_header('Location: %s' % (url))
+
     def display(self):
         self.add_header(self.cookie.output())
         sys.stdout.write(self._headers + '\r\n')
