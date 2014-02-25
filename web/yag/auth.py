@@ -1,12 +1,17 @@
 import sec
 import db_op
 
+def exist_user(username):
+    if sec.check_username(username):
+        user = db_op.get_user(username)
+        if len(user) > 0:
+            return True
+    return False
+
 def add_user(username, password):
     if sec.check_username(username) and sec.check_password(password):
-        user = db_op.get_user(username)
-        if len(user) == 0:
-            safe_password, salt = sec.get_safe_password(password)
-            db_op.add_user(username, safe_password, salt)
+        safe_password, salt = sec.get_safe_password(password)
+        if db_op.add_user(username, safe_password, salt):
             return True
     return False
 

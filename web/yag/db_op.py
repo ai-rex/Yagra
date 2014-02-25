@@ -31,7 +31,11 @@ def add_user(username, password, salt):
     salt = escape_string(salt)
     sql = "INSERT INTO User VALUES ('%s', '%s', '%s');" % (username, password,
                                                            salt)
-    run_sql(sql)
+    try:
+        run_sql(sql)
+        return True
+    except:
+        return False
 
 def get_user(username):
     sql = "SELECT * FROM User WHERE username='%s';" % (username)
