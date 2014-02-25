@@ -11,7 +11,7 @@ if 'REQUEST_METHOD' in p.env:
     method = p.env.get('REQUEST_METHOD').upper()
     if method == 'GET':
         if auth.cookie_auth(p.http_cookie):
-            p.redirect('user')
+            p.redirect('user.py')
         else:
             p.add_file('template/login.html')
     elif method == 'POST':
@@ -20,7 +20,7 @@ if 'REQUEST_METHOD' in p.env:
         password = form.getvalue('password')
         if auth.auth(username, password):
             auth.save_auth(username, p.cookie)
-            p.redirect('user')
+            p.redirect('user.py')
         else:
             p.add('username or password error')
     else:

@@ -13,7 +13,7 @@ if 'REQUEST_METHOD' in p.env:
         auth_info = auth.cookie_auth(p.http_cookie)
         if auth_info:
             auth.del_auth(auth_info[0])
-        p.redirect('login')
+        p.redirect('login.py')
     else:
         p.add('method error')
 else:
