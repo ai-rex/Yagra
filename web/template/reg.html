@@ -1,10 +1,55 @@
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yagra用户注册</title>
-    <body>
-        <form name='form' method='post'>
-            用户名：<input type='text' name='username'></input><br/>
-            密码：<input type='password' name='password'></input><br/>
-            <input type='submit' value='注册'></input>
-        </form>
-    </body>
+
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class='container'>
+    <div class="row">
+    <div class='col-md-4'></div>
+    <div class='col-md-4'><h1>Yagra</h1></div>
+    <div class='col-md-4'></div>
+    </div>
+    <div class="row">
+    <div class='col-md-4'></div>
+    <div class='col-md-4'><h4>Yet Another GRAvatar</h4></div>
+    <div class='col-md-4'></div>
+    </div>
+    <div class="row" style='margin-top:20px;'>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    <form name='form' method='post' role='form'>
+        <div class="form-group">
+            <label>用户名</label>
+            <input type='text' class="form-control" placeholder="输入用户名" name='username'>
+        </div>
+        <div class="form-group">
+            <label>密码</label>
+            <input type='password' class="form-control" placeholder="输入密码" name='password'>
+        </div>
+            <input type='submit' class='btn btn-success' value='注册'></input>
+    </form>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
 </html>
+

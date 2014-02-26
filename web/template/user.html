@@ -1,13 +1,69 @@
+<!DOCTYPE html>
 <html>
-<title>用户页面</title>
-<body>
-    <h1>%s</h1>
-    <a href='logout.py'>登出</a>
-    <p><a href='%s'>Link</a></p>
-    <p><img src='%s' width='80px'></img></p>   
-    <form enctype="multipart/form-data" method="post">
-    <p>文件名： <input type="file" name="filename" /></p>
-    <p><input type="submit" value="上传头像" /></p>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Yagra用户页面</title>
+
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class='container'>
+    <div class="row">
+    <div class='col-md-4'></div>
+    <div class='col-md-4'><h1>Yagra</h1></div>
+    <div class='col-md-4'></div>
+    </div>
+    <div class="row">
+    <div class='col-md-4'></div>
+    <div class='col-md-4'><h4>Yet Another GRAvatar</h4></div>
+    <div class='col-md-4'></div>
+    </div>
+    
+    <div class="row" style='margin-top:20px;'>
+    <div class='col-md-4'></div>
+    <div class='col-md-4'>
+        <div class='row'>
+            <div class='col-md-6'>
+            <img src='%s' width='128px' class="img-thumbnail"></img>
+            </div>
+            <div class='col-md-6'>
+            <h2>%s</h2><a href='%s'>图片链接</a>
+            <a href='logout.py' style='margin-left:20px'>登出</a>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-4'></div>
+    </div>
+
+    <div class="row" style='margin-top:20px;'>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    <form enctype="multipart/form-data" name='form' method='post' role='form'>
+        <div class="form-group">
+            <label>上传图片</label>
+            <input type='file' name='filename'></input>
+            <p class="help-block">支持jpeg图片文件</p>
+        </div>
+            <input type='submit' class='btn btn-default' value='上传'></input>
     </form>
-</body>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  </body>
 </html>
+
