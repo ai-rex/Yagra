@@ -15,7 +15,7 @@ def save_file(data, username):
     db_op.add_image(get_hashcode(username), filepath)
 
 def get_hashcode(username):
-    return hashlib.md5(username).hexdigest()
+    return hashlib.md5(username.lower()).hexdigest()
 
 def get_default():
     return _SAVE_PATH + _DEFAULT_IMG
