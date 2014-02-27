@@ -12,8 +12,8 @@ _CHARSET = 'utf8'
 
 def _database():
     if not globals().get('_d'):
-        _d = None
         global _d
+        _d = None
     if _d:
         return _d
     else:
