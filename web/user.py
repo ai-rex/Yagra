@@ -24,13 +24,17 @@ if auth_info:
             if fileitem.filename:
                 username = auth_info[0]
                 img.save_file(fileitem.file.read(), username)
-                p.add('The file was uploaded successfully')
+                p.add_file('template/info.html', (u'头像上传成功', 'user.py'))
+                #p.add('The file was uploaded successfully')
             else:
-                p.add('No file was uploaded')
+                p.add_file('template/info.html', (u'头像上传失败', 'user.py'))
+                #p.add('No file was uploaded')
         else:
-            p.add('method error')
+            p.redirect('static/error.html')
+            #p.add('method error')
     else:
-        p.add('environ has no REQUEST_METHOD')
+        p.redirect('static/error.html')
+        #p.add('environ has no REQUEST_METHOD')
 else:
     p.redirect('login.py')
 

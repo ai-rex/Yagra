@@ -23,11 +23,14 @@ if 'REQUEST_METHOD' in p.env:
             auth.save_auth(username, p.cookie)
             p.redirect('user.py')
         else:
-            p.add('username or password error')
+            p.add_file('template/info.html', (u'用户名或密码错误', 'login.py'))
+            #p.add('username or password error')
     else:
-        p.add('method error')
+        p.redirect('static/error.html')
+        #p.add('method error')
 else:
-    p.add('environ has no REQUEST_METHOD')
+    p.redirect('static/error.html')
+    #p.add('environ has no REQUEST_METHOD')
 
 p.display()
 

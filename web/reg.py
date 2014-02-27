@@ -18,15 +18,22 @@ if 'REQUEST_METHOD' in p.env:
         password = form.getvalue('password')
         if not auth.exist_user(username):
             if auth.add_user(username, password):
-                p.add('reg success')
+                p.add_file('template/info.html', (u'注册成功！', 'login.py'))
+                #p.add('reg success')
             else:
-                p.add('empty password or username has been used')
+                p.add_file('template/info.html', 
+                           (u'不能使用空密码，或用户名已存在', 'reg.py'))
+                #p.add('empty password or username has been used')
         else:
-            p.add('invalid username or username has been used')
+            p.add_file('template/info.html', 
+                       (u'用户名不符合规范，或用户名已存在', 'reg.py'))
+            #p.add('invalid username or username has been used')
     else:
-        p.add('method error')
+        p.redirect('static/error.html')
+        #p.add('method error')
 else:
-    p.add('environ has no REQUEST_METHOD')
+    p.redirect('static/error.html')
+    #p.add('environ has no REQUEST_METHOD')
 
 p.display()
 

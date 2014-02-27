@@ -16,9 +16,11 @@ if 'REQUEST_METHOD' in p.env:
             auth.del_auth(auth_info[0])
         p.redirect('login.py')
     else:
-        p.add('method error')
+        p.redirect('static/error.html')
+        #p.add('method error')
 else:
-    p.add('environ has no REQUEST_METHOD')
+    p.redirect('static/error.html')
+    #p.add('environ has no REQUEST_METHOD')
 
 p.display()
 
