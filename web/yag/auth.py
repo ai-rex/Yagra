@@ -1,6 +1,9 @@
 import sec
 import db_op
 
+__all__ = ['exist_user', 'add_user', 'auth', 'save_auth', 'cookie_auth',
+           'del_auth']
+
 def exist_user(username):
     if sec.check_username(username):
         user = db_op.get_user(username)

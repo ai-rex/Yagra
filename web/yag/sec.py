@@ -3,13 +3,16 @@ import os
 import hashlib
 import binascii
 
-MIN_USERNAME_LENGTH=4
-MAX_USERNAME_LENGTH=32
+__all__ = ['check_username', 'check_password', 'gen_salt', 'get_safe_password',
+           'verify_password', 'gen_token', 'check_cookie', 'check_hashcode']
+
+_MIN_USERNAME_LENGTH=4
+_MAX_USERNAME_LENGTH=32
 
 def check_username(username):
     if isinstance(username, str):
-        pattern = '^[0-9A-Za-z]{%d,%d}$' % (MIN_USERNAME_LENGTH, 
-                                             MAX_USERNAME_LENGTH)
+        pattern = '^[0-9A-Za-z]{%d,%d}$' % (_MIN_USERNAME_LENGTH, 
+                                            _MAX_USERNAME_LENGTH)
         if re.match(pattern, username):
             return True
     return False
@@ -41,8 +44,8 @@ def gen_token():
 
 def check_cookie(cookie):
     if isinstance(cookie, str):
-        pattern = '^[0-9A-Za-z]{%d,%d}_[0-9a-f]{32}$' % (MIN_USERNAME_LENGTH,
-                                                         MAX_USERNAME_LENGTH)
+        pattern = '^[0-9A-Za-z]{%d,%d}_[0-9a-f]{32}$' % (_MIN_USERNAME_LENGTH,
+                                                         _MAX_USERNAME_LENGTH)
         if re.match(pattern, cookie):
             return True
     return False
