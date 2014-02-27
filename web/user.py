@@ -16,8 +16,7 @@ if auth_info:
         if method == 'GET':
             username = auth_info[0]
             image_path = 'avatar.py/%s' % (img.get_hashcode(username))
-            p.add_file('template/user.html', (image_path, username,
-                                              image_path))
+            p.add_file('template/user.html', (image_path, username, image_path))
         elif method == 'POST':
             form = p.form
             fileitem = form['filename']

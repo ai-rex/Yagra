@@ -19,8 +19,9 @@ if 'REQUEST_METHOD' in p.env:
         form = p.form
         username = form.getvalue('username')
         password = form.getvalue('password')
-        if auth.auth(username, password):
-            auth.save_auth(username, p.cookie)
+        reg_username = auth.auth(username, password)
+        if reg_username:
+            auth.save_auth(reg_username, p.cookie)
             p.redirect('user.py')
         else:
             p.add_file('template/info.html', (u'用户名或密码错误', 'login.py'))

@@ -6,8 +6,8 @@ __all__ = ['exist_user', 'add_user', 'auth', 'save_auth', 'cookie_auth',
 
 def exist_user(username):
     if sec.check_username(username):
-        user = db_op.get_user(username)
-        if len(user) > 0:
+        users = db_op.get_user(username)
+        if len(users) > 0:
             return True
     return False
 
@@ -23,11 +23,12 @@ def auth(username, password):
         users = db_op.get_user(username)
         if len(users) == 1:
             user = users[0]
+            reg_username = user[0]
             safe_password = user[1]
             salt = user[2]
             if sec.verify_password(safe_password, password, salt):
-                return True
-    return False
+                return reg_username
+    return None
 
 def save_auth(username, cookie):
     token = sec.gen_token()
