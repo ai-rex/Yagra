@@ -1,4 +1,5 @@
 import MySQLdb
+from  _mysql_exceptions import IntegrityError
 
 __all__ = ['Database']
 

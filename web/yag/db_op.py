@@ -37,7 +37,7 @@ def add_user(username, password, salt):
     try:
         _run_sql(sql)
         return True
-    except:
+    except db.IntegrityError as e:
         return False
 
 def get_user(username):
