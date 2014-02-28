@@ -3,6 +3,7 @@
 
 from yag import page
 from yag import auth
+from yag import logger
 
 p = page.Page()
 
@@ -19,21 +20,18 @@ if 'REQUEST_METHOD' in p.env:
         if not auth.exist_user(username):
             if auth.add_user(username, password):
                 p.add_file('template/info.html', (u'注册成功！', 'login.py'))
-                #p.add('reg success')
             else:
                 p.add_file('template/info.html', 
                            (u'不能使用空密码，或用户名已存在', 'reg.py'))
-                #p.add('empty password or username has been used')
         else:
             p.add_file('template/info.html', 
                        (u'用户名不符合规范，或用户名已存在', 'reg.py'))
-            #p.add('invalid username or username has been used')
     else:
         p.redirect('static/error.html')
-        #p.add('method error')
+        logger.err(__name__, 'Request head method is %s' % (method))
 else:
     p.redirect('static/error.html')
-    #p.add('environ has no REQUEST_METHOD')
+    logger.err(__name__, 'REQUEST_METHOD not in os.environ')
 
 p.display()
 

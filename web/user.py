@@ -4,6 +4,7 @@
 from yag import page
 from yag import auth
 from yag import img
+from yag import logger
 
 p = page.Page()
 
@@ -24,16 +25,14 @@ if auth_info:
                 username = auth_info[0]
                 img.save_file(fileitem.file.read(), username)
                 p.add_file('template/info.html', (u'头像上传成功', 'user.py'))
-                #p.add('The file was uploaded successfully')
             else:
                 p.add_file('template/info.html', (u'头像上传失败', 'user.py'))
-                #p.add('No file was uploaded')
         else:
             p.redirect('static/error.html')
-            #p.add('method error')
+            logger.err(__name__, 'Request head method is %s' % (method))
     else:
         p.redirect('static/error.html')
-        #p.add('environ has no REQUEST_METHOD')
+        logger.err(__name__, 'REQUEST_METHOD not in os.environ')
 else:
     p.redirect('login.py')
 

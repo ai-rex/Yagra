@@ -3,6 +3,7 @@
 
 from yag import page
 from yag import auth
+from yag import logger
 
 p = page.Page()
 
@@ -17,10 +18,10 @@ if 'REQUEST_METHOD' in p.env:
         p.redirect('login.py')
     else:
         p.redirect('static/error.html')
-        #p.add('method error')
+        logger.err(__name__, 'Request head method is %s' % (method))
 else:
     p.redirect('static/error.html')
-    #p.add('environ has no REQUEST_METHOD')
+    logger.err(__name__, 'REQUEST_METHOD not in os.environ')
 
 p.display()
 
