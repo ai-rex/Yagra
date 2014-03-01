@@ -6,8 +6,9 @@ import binascii
 __all__ = ['check_username', 'check_password', 'gen_salt', 'get_safe_password',
            'verify_password', 'gen_token', 'check_cookie', 'check_hashcode']
 
-_MIN_USERNAME_LENGTH=4
-_MAX_USERNAME_LENGTH=32
+_MIN_USERNAME_LENGTH = 4
+_MAX_USERNAME_LENGTH = 32
+_MIN_PASSWORD_LENGTH = 6
 
 def check_username(username):
     if isinstance(username, str):
@@ -19,7 +20,7 @@ def check_username(username):
 
 def check_password(password):
     if isinstance(password, str):
-        if len(password) > 0:
+        if len(password) >= _MIN_PASSWORD_LENGTH:
             return True
     return False
 
