@@ -16,7 +16,7 @@ if auth_info:
         method = p.env.get('REQUEST_METHOD').upper()
         if method == 'GET':
             username = auth_info[0]
-            image_path = 'avatar.py/%s' % (img.get_hashcode(username))
+            image_path = 'avatar/%s' % (img.get_hashcode(username))
             p.add_file('template/user.html', (image_path, username, image_path))
         else:
             p.redirect('static/error.html')
@@ -25,7 +25,7 @@ if auth_info:
         p.redirect('static/error.html')
         logger.err(__name__, 'REQUEST_METHOD not in os.environ')
 else:
-    p.redirect('login.py')
+    p.redirect('login')
 
 p.display()
 

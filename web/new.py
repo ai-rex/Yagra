@@ -25,7 +25,7 @@ if auth_info:
                 _IMG_SUPPORTED = ['jpeg', 'gif', 'png', 'bmp', 'tiff']
                 if img.get_type_by_stream(stream) in _IMG_SUPPORTED:
                     img.save_file(stream, username)
-                    p.redirect('user.py')
+                    p.redirect('user')
                 else:
                     p.add_file(
                         'template/new.html',
@@ -41,7 +41,7 @@ if auth_info:
         p.redirect('static/error.html')
         logger.err(__name__, 'REQUEST_METHOD not in os.environ')
 else:
-    p.redirect('login.py')
+    p.redirect('login')
 
 p.display()
 

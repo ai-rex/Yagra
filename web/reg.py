@@ -28,7 +28,7 @@ if 'REQUEST_METHOD' in p.env:
             if sec.check_password(password):
                 if not auth.exist_user(username):
                     if auth.add_user(username, password):
-                        p.add_file(T_INFO, (u'注册成功！', 'login.py'))
+                        p.add_file(T_INFO, (u'注册成功！', 'login'))
                     else:
                         p.add_file(T, (RED_TEXT % u'用户名已存在', ''))
                 else:

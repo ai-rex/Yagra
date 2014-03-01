@@ -17,17 +17,12 @@ def respond_image(page, filepath):
     page.add(data)
     page.display()
 
-if 'REQUEST_URI' in p.env:
-    uri = p.env.get('REQUEST_URI')
-    if uri:
-        items = uri.split('/')
-        l = len(items)
-        if l >= 2:
-            hashcode = items[l - 1]
-            filepath = img.get_image(hashcode)
-            if filepath:
-                respond_image(p, filepath)
-                use_default = False
+hashcode = p.form.getvalue('hashcode')
+if hashcode:
+    filepath = img.get_image(hashcode)
+    if filepath:
+        respond_image(p, filepath)
+        use_default = False
 if use_default:
     respond_image(p, img.get_default())
 

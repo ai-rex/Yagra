@@ -13,7 +13,7 @@ if 'REQUEST_METHOD' in p.env:
     method = p.env.get('REQUEST_METHOD').upper()
     if method == 'GET':
         if auth.cookie_auth(p.http_cookie):
-            p.redirect('user.py')
+            p.redirect('user')
         else:
             p.add_file('template/login.html')
     elif method == 'POST':
@@ -23,9 +23,9 @@ if 'REQUEST_METHOD' in p.env:
         reg_username = auth.auth(username, password)
         if reg_username:
             auth.save_auth(reg_username, p.cookie)
-            p.redirect('user.py')
+            p.redirect('user')
         else:
-            p.add_file('template/info.html', (u'用户名或密码错误', 'login.py'))
+            p.add_file('template/info.html', (u'用户名或密码错误', 'login'))
     else:
         p.redirect('static/error.html')
         logger.err(__name__, 'Request head method is %s' % (method))
