@@ -13,6 +13,7 @@ if 'REQUEST_METHOD' in p.env:
     method = p.env.get('REQUEST_METHOD').upper()
     if method == 'GET':
         if auth.cookie_auth(p.http_cookie):
+            # Redirect to user page if already logged in
             p.redirect('user')
         else:
             p.add_file('template/login.html')
@@ -20,6 +21,7 @@ if 'REQUEST_METHOD' in p.env:
         form = p.form
         username = form.getvalue('username')
         password = form.getvalue('password')
+
         reg_username = auth.auth(username, password)
         if reg_username:
             auth.save_auth(reg_username, p.cookie)

@@ -11,6 +11,7 @@ content_type = 'Content-type: image/%s'
 use_default = True
 
 def respond_image(page, filepath):
+    # Read the image file and add the data to page.  
     with open(filepath) as f:
         data = f.read()
     page.add_header(content_type % img.get_type_by_stream(data))
