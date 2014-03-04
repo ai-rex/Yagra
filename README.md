@@ -107,9 +107,9 @@ web/yag目录中的模块为网站页面HTTP输入输出、数据访问、IO安�
 
     auth.py  db_op.py  db.py  img.py  logger.py  page.py  sec.py
 
-web/static目录保存了需要静态访问的错误页面和404页面
+web/static目录保存了需要静态访问的错误页面、404页面和默认头像图片
 
-    404.html  error.html
+    404.html  error.html  rex.jpeg
 
 ### 安全性
 在服务器端需要安全的保存用户数据，数据库中的用户密码使用哈希密文保存，每个用户具备独立的盐，哈希算法为SHA256。
