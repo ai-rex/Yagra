@@ -101,25 +101,25 @@ Apache默认没有启用rewrite模块，使用以下命令启用
 
     index.py  reg.py  login.py  logout.py  user.py  new.py  avatar.py
 
-_index.py_
+*index.py*
 网站默认页，提供用户注册与登录入口。
 
-_reg.py_
+*reg.py*
 注册页面，注册要求用户名长度在4-32个字符，字符可以是字母或者数字，密码长度不少于6个字符，可以使用任意字符。
 
-_login.py_
+*login.py*
 登录页面，输入注册时的用户名和密码即可登录，用户名不区分大小写。
 
-_logout.py_
+*logout.py*
 退出模块，执行即退出登录，并自动跳转到登录页面。
 
-_user.py_
+*user.py*
 用户页面，显示用户头像和头像API链接，提供上传图片页面入口。
 
-_new.py_
+*new.py*
 图片上传页面，接收图片数据并保存，根据图片数据判断图片类型，支持jpeg、gif、png、bmp和tiff图片格式。
 
-_avatar.py_
+*avatar.py*
 图片API，根据用户名小写的MD5哈希值返回图片，若不存在则返回默认图片，自动判断图片类型并在返回HTTP头中注明。
 
 若未登录访问需要登录访问的页面，将重定向到登录页面。
