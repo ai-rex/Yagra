@@ -7,8 +7,8 @@ import db_op
 __all__ = ['get_type_by_stream', 'save_file', 'get_hashcode', 'get_default',
            'get_image']
 
-_SAVE_PATH = '/tmp/'
-_DEFAULT_IMG = 'rex'
+_SAVE_PATH = '/Yagra/upload/'
+_DEFAULT_IMG = '/Yagra/web/static/rex.jpeg'
 
 def get_type_by_stream(stream):
     """Check the data stream and return what type of image it is."""
@@ -27,7 +27,7 @@ def get_hashcode(username):
 
 def get_default():
     """Return the file path of the default image."""
-    return _SAVE_PATH + _DEFAULT_IMG
+    return _DEFAULT_IMG
 
 def get_image(hashcode):
     """Get the image file path by hash code."""
